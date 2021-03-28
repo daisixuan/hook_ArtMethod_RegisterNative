@@ -6,8 +6,8 @@ hook ArtMethod::RegisterNative 可以得到更多的信息,动态注册无法逃
 */
 
 function hook_ArtMethodRegister() {
-    var module_libart = Process.findModuleByName("libart.so");
-    var symbols = module_libart.enumerateSymbols();
+    var symbols = Module.enumerateSymbolsSync("libart.so");
+
     var ArtMethodRegisterNative = null;
     var ArtMethod_PrettyMethod = null;
     for (var i = 0; i < symbols.length; i++) {
